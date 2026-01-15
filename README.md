@@ -1,6 +1,6 @@
 # autodoc-cli
 
-A command-line tool written in TypeScript using Node.js.
+Automatically generate README.md files by analyzing your project
 
 ## ✨ Features
 
@@ -11,13 +11,20 @@ A command-line tool written in TypeScript using Node.js.
 ## 📦 Installation
 
 ```bash
-npm install
+npm install -g autodoc-cli
 ```
 
 ## ▶️ Usage
 
 ```bash
-your-command --help
+# Generate README.md in current directory
+autodoc-cli
+
+# Enable AI-powered summarization
+autodoc-cli --ai
+
+# Verbose output
+autodoc-cli --verbose
 ```
 
 ## 🧠 Tech Stack
@@ -25,8 +32,12 @@ your-command --help
 **Languages**
 - TypeScript
 
-**Frameworks / Tools**
+**Runtime**
 - Node.js
+
+**Dependencies**
+- commander - CLI framework
+- chalk - Terminal styling
 
 ## ⚙️ Scripts
 
