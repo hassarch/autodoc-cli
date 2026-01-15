@@ -1,6 +1,6 @@
 {
   "name": "autodoc-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Automatically generate README.md files by analyzing your project",
   "main": "dist/index.js",
   "bin": {
