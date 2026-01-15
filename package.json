@@ -1,0 +1,23 @@
+{
+  "name": "autodoc-cli",
+  "version": "1.0.1",
+  "description": "Automatically generate README.md files by analyzing your project",
+  "main": "dist/index.js",
+  "bin": {
+    "autodoc": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "cli",
+    "readme",
+    "documentation",
+    "generator",
+    "developer-tools"
+  ],
+  "license": "MIT"
+}
