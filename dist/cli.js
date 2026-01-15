@@ -17,36 +17,21 @@ function runCLI() {
     program
         .name("autodoc")
         .description("Automatically generate README.md for your project")
-        .version("1.0.0")
+        .version("1.0.2")
         .option("--ai", "Enable AI-powered summarization")
-        .option("--no-ai", "Disable AI")
         .option("--verbose", "Verbose logs");
+    // ✅ DEFAULT ACTION (autodoc)
     program.action(async () => {
-        // ─────────────────────────────────────
-        // CLI options
-        // ─────────────────────────────────────
         const options = program.opts();
         const useAI = Boolean(options.ai);
         const verbose = Boolean(options.verbose);
         const projectRoot = process.cwd();
-        // ─────────────────────────────────────
-        // PHASE 2 — Scan
-        // ─────────────────────────────────────
         console.log(chalk_1.default.green("✔ Scanning project..."));
         const tree = (0, scanner_1.scanProject)(projectRoot);
-        // ─────────────────────────────────────
-        // PHASE 3 — Tech stack
-        // ─────────────────────────────────────
         console.log(chalk_1.default.green("✔ Detecting tech stack..."));
         const tech = (0, techDectector_1.detectTechStack)(tree, projectRoot);
-        // ─────────────────────────────────────
-        // PHASE 4 — Understanding
-        // ─────────────────────────────────────
         console.log(chalk_1.default.green("✔ Understanding project..."));
         const understanding = (0, understanding_1.understandProject)(projectRoot, tech);
-        // ─────────────────────────────────────
-        // PHASE 6 — AI (optional)
-        // ─────────────────────────────────────
         let finalDescription = understanding.descriptionHint;
         let aiFeatures;
         if (useAI) {
@@ -65,9 +50,6 @@ function runCLI() {
             if (ai?.features)
                 aiFeatures = ai.features;
         }
-        // ─────────────────────────────────────
-        // PHASE 5 — README
-        // ─────────────────────────────────────
         console.log(chalk_1.default.green("✔ Generating README.md..."));
         await (0, readme_1.generateREADME)(projectRoot, {
             projectName: path_1.default.basename(projectRoot),
@@ -80,6 +62,13 @@ function runCLI() {
             packageManager: tech.packageManager,
             aiFeatures
         });
+    });
+    // ✅ OPTIONAL INIT COMMAND (does NOT affect generation)
+    program
+        .command("init")
+        .description("Initialize AutoDoc configuration file")
+        .action(() => {
+        console.log(chalk_1.default.yellow("Config support is optional. README generation works without it."));
     });
     program.parse(process.argv);
 }
