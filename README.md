@@ -8,23 +8,24 @@ Automatically generate README.md files by analyzing your project
 - Zero-configuration usage
 - GitHub-ready documentation
 
-## 📦 Installation
-
-```bash
-npm install -g autodoc-cli
-```
-
 ## ▶️ Usage
 
 ```bash
-# Generate README.md in current directory
-autodoc-cli
+# Build the project
+npm run build
+
+# Run locally
+npm start
+
+# Or link globally
+npm link
+autodoc
 
 # Enable AI-powered summarization
-autodoc-cli --ai
+autodoc --ai
 
 # Verbose output
-autodoc-cli --verbose
+autodoc --verbose
 ```
 
 ## 🧠 Tech Stack
@@ -41,7 +42,8 @@ autodoc-cli --verbose
 
 ## ⚙️ Scripts
 
-- `build`: `tsc`
+- `build`: `tsc` - Compile TypeScript to JavaScript
+- `start`: `node dist/index.js` - Run the CLI locally
 
 ## 🤝 Contributing
 
