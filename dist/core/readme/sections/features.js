@@ -1,17 +1,39 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.renderFeatures = renderFeatures;
-function renderFeatures(projectType, aiFeatures) {
-    const base = aiFeatures?.length
-        ? aiFeatures
-        : [
-            "Automatic project analysis",
-            "Zero-configuration usage",
-            "GitHub-ready documentation"
-        ];
+function renderFeatures(projectType, aiFeatures, hasTests, hasTypeScript) {
+    let features = aiFeatures?.length ? aiFeatures : [];
+    // Add intelligent default features based on project analysis
+    if (!aiFeatures?.length) {
+        if (projectType === "CLI") {
+            features.push("Command-line interface with intuitive commands");
+            features.push("Built-in help and documentation");
+        }
+        else if (projectType === "API") {
+            features.push("RESTful API endpoints");
+            features.push("Robust error handling");
+        }
+        else if (projectType === "Web App") {
+            features.push("Modern web application");
+            features.push("Responsive design");
+        }
+        else if (projectType === "Library") {
+            features.push("Reusable components and utilities");
+            features.push("Well-documented API");
+        }
+        if (hasTypeScript) {
+            features.push("Type-safe with TypeScript");
+        }
+        if (hasTests) {
+            features.push("Comprehensive test coverage");
+        }
+    }
+    if (features.length === 0) {
+        return "";
+    }
     return `## ✨ Features
 
-${base.map(f => `- ${f}`).join("\n")}
+${features.map(f => `- ${f}`).join("\n")}
 
 `;
 }

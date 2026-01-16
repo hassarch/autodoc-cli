@@ -1,14 +1,20 @@
 # autodoc-cli
 
+![Version](https://img.shields.io/badge/version-1.0.3-blue.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg)
+
 Automatically generate README.md files by analyzing your project
 
 ## ✨ Features
 
-- Automatic project analysis
-- Zero-configuration usage
-- GitHub-ready documentation
+- Intelligent project analysis and type detection (CLI, API, Web App, Library)
+- Professional README generation with badges and structured sections
+- AI-powered content enhancement (optional)
+- Zero-configuration - works out of the box
+- TypeScript support with full type safety
+- Categorized scripts and dependencies
+- Customizable output
 
-## ▶️ Usage
+## 📖 Usage
 
 ```bash
 # Build the project
@@ -28,7 +34,7 @@ autodoc --ai
 autodoc --verbose
 ```
 
-## 🧠 Tech Stack
+## 🛠️ Tech Stack
 
 **Languages**
 - TypeScript
@@ -36,14 +42,17 @@ autodoc --verbose
 **Runtime**
 - Node.js
 
-**Dependencies**
-- commander - CLI framework
-- chalk - Terminal styling
+**Key Dependencies**
+- `commander` - CLI framework
+- `chalk` - Terminal styling
 
-## ⚙️ Scripts
+## ⚙️ Available Scripts
 
-- `build`: `tsc` - Compile TypeScript to JavaScript
-- `start`: `node dist/index.js` - Run the CLI locally
+**Development**
+- `npm run start` - Run the CLI locally
+
+**Build**
+- `npm run build` - Compile TypeScript to JavaScript
 
 ## 🤝 Contributing
 

@@ -14,15 +14,21 @@ export function buildREADME(data: {
   scripts: Record<string, string>;
   languages: string[];
   frameworks: string[];
+  dependencies?: string[];
   packageManager?: string;
-  aiFeatures?:string[];
+  aiFeatures?: string[];
+  version?: string;
+  license?: string;
+  binCommands?: Record<string, string>;
+  hasTests?: boolean;
+  hasTypeScript?: boolean;
 }): string {
   return (
-    renderHeader(data.projectName, data.description) +
-    renderFeatures(data.projectType,data.aiFeatures) +
+    renderHeader(data.projectName, data.description, data.version, data.license) +
+    renderFeatures(data.projectType, data.aiFeatures, data.hasTests, data.hasTypeScript) +
     renderInstallation(data.packageManager) +
-    renderUsage(data.projectType, data.entryPoints) +
-    renderTechStack(data.languages, data.frameworks) +
+    renderUsage(data.projectType, data.entryPoints, data.projectName, data.binCommands) +
+    renderTechStack(data.languages, data.frameworks, data.dependencies) +
     renderScripts(data.scripts) +
     renderFooter()
   );

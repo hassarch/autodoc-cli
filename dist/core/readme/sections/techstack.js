@@ -1,14 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.renderTechStack = renderTechStack;
-function renderTechStack(languages, frameworks) {
-    return `## 🧠 Tech Stack
-
-**Languages**
-${languages.map(l => `- ${l}`).join("\n")}
-
-**Frameworks / Tools**
-${frameworks.length ? frameworks.map(f => `- ${f}`).join("\n") : "- None"}
-
-`;
+function renderTechStack(languages, frameworks, dependencies) {
+    let output = `## 🛠️ Tech Stack\n\n`;
+    if (languages.length) {
+        output += `**Languages**\n`;
+        output += languages.map(l => `- ${l}`).join("\n") + "\n\n";
+    }
+    if (frameworks.length) {
+        output += `**Frameworks & Libraries**\n`;
+        output += frameworks.map(f => `- ${f}`).join("\n") + "\n\n";
+    }
+    if (dependencies && dependencies.length > 0) {
+        const keyDeps = dependencies.slice(0, 8);
+        output += `**Key Dependencies**\n`;
+        output += keyDeps.map(d => `- \`${d}\``).join("\n") + "\n\n";
+    }
+    return output;
 }

@@ -11,14 +11,26 @@ export function detectProjectType(
   if (fs.existsSync(pkgPath)) {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
 
+    // CLI detection
     if (pkg.bin) return "CLI";
-    if (dependencies.includes("express")) return "API";
-    if (
-      dependencies.includes("react") ||
-      dependencies.includes("next")
-    )
+    
+    // Library detection
+    if (pkg.main && !pkg.scripts?.start && !dependencies.some(d => 
+      ["express", "fastify", "koa", "react", "vue", "angular", "next", "nuxt"].includes(d)
+    )) {
+      return "Library";
+    }
+    
+    // API detection
+    if (dependencies.some(d => ["express", "fastify", "koa", "hapi", "nestjs"].includes(d))) {
+      return "API";
+    }
+    
+    // Web App detection
+    if (dependencies.some(d => ["react", "vue", "angular", "svelte", "next", "nuxt", "gatsby"].includes(d))) {
       return "Web App";
+    }
   }
 
-  return "Unknown";
+  return "Application";
 }
