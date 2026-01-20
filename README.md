@@ -16,6 +16,8 @@ Automatically generate README.md files by analyzing your project
 
 ## 📖 Usage
 
+### Using npm
+
 ```bash
 # Build the project
 npm run build
@@ -32,6 +34,25 @@ autodoc --ai
 
 # Verbose output
 autodoc --verbose
+```
+
+### Using Docker
+
+```bash
+# Build the Docker image
+docker build -t autodoc-cli .
+
+# Run the CLI (analyzes current directory)
+docker run --rm -v $(pwd):/workspace -w /workspace autodoc-cli
+
+# With AI enhancement
+docker run --rm -v $(pwd):/workspace -w /workspace autodoc-cli --ai
+
+# Using docker-compose
+docker-compose run --rm autodoc
+
+# Analyze a specific project
+docker run --rm -v /path/to/project:/workspace -w /workspace autodoc-cli
 ```
 
 ## 🛠️ Tech Stack

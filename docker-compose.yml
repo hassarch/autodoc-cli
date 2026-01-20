@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  autodoc:
+    build: .
+    image: autodoc-cli:latest
+    volumes:
+      # Mount current directory to analyze projects
+      - ./:/workspace
+    working_dir: /workspace
+    command: ["--help"]
