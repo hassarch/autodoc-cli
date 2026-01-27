@@ -12,28 +12,22 @@ Automatically generate README.md files by analyzing your project
 - Zero-configuration - works out of the box
 - TypeScript support with full type safety
 - Categorized scripts and dependencies
+- Docker support for containerized usage
 - Customizable output
 
-## 📖 Usage
+## 📦 Installation
 
 ### Using npm
 
 ```bash
+# Install dependencies
+npm install
+
 # Build the project
 npm run build
 
-# Run locally
-npm start
-
-# Or link globally
+# Link globally (optional)
 npm link
-autodoc
-
-# Enable AI-powered summarization
-autodoc --ai
-
-# Verbose output
-autodoc --verbose
 ```
 
 ### Using Docker
@@ -42,6 +36,34 @@ autodoc --verbose
 # Build the Docker image
 docker build -t autodoc-cli .
 
+# Or use docker-compose
+docker-compose build
+```
+
+## 📖 Usage
+
+### Local Usage
+
+```bash
+# Generate README for current directory
+npm start
+
+# Or if linked globally
+autodoc
+
+# Enable AI-powered summarization
+autodoc --ai
+
+# Verbose output
+autodoc --verbose
+
+# Show help
+autodoc --help
+```
+
+### Docker Usage
+
+```bash
 # Run the CLI (analyzes current directory)
 docker run --rm -v $(pwd):/workspace -w /workspace autodoc-cli
 
@@ -67,6 +89,10 @@ docker run --rm -v /path/to/project:/workspace -w /workspace autodoc-cli
 - `commander` - CLI framework
 - `chalk` - Terminal styling
 
+**DevOps**
+- Docker
+- Docker Compose
+
 ## ⚙️ Available Scripts
 
 **Development**
@@ -74,6 +100,16 @@ docker run --rm -v /path/to/project:/workspace -w /workspace autodoc-cli
 
 **Build**
 - `npm run build` - Compile TypeScript to JavaScript
+
+## 🐳 Docker
+
+The project includes Docker support for containerized usage:
+
+- **Dockerfile** - Multi-stage build for optimized image size
+- **docker-compose.yml** - Easy orchestration
+- **.dockerignore** - Excludes unnecessary files
+
+The Docker image uses Node.js 20 Alpine for minimal footprint and mounts volumes to analyze projects on your host machine.
 
 ## 🤝 Contributing
 
