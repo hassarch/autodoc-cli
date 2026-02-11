@@ -20,5 +20,13 @@
     "generator",
     "developer-tools"
   ],
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  },
   "license": "MIT"
 }
