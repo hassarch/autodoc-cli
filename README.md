@@ -111,6 +111,24 @@ The project includes Docker support for containerized usage:
 
 The Docker image uses Node.js 20 Alpine for minimal footprint and mounts volumes to analyze projects on your host machine.
 
+## 🔄 CI/CD Pipelines
+
+Automated workflows are configured via GitHub Actions:
+
+- **CI** - Builds and tests on Node.js 18.x and 20.x on every push and PR
+- **Docker** - Builds and pushes Docker images to Docker Hub and GitHub Container Registry
+- **CodeQL** - Security analysis and code scanning
+- **Release** - Automated release creation and artifact uploads on version tags
+- **Dependabot** - Automatic dependency updates for npm and Docker
+
+### Setting up CI/CD
+
+1. Push code to GitHub
+2. Configure secrets in repository settings:
+   - `DOCKER_USERNAME` - Docker Hub username
+   - `DOCKER_PASSWORD` - Docker Hub access token
+3. Workflows run automatically on push, PR, and tags
+
 ## 🤝 Contributing
 
 Contributions are welcome. Please open an issue or submit a pull request.
